@@ -1,0 +1,54 @@
+server:
+  port: 8002 #冒号之后必须都要有空格
+logging:
+  level:
+    tk:
+      mybatis: TRACE
+    com:
+      kpttech:
+        mapper: debug
+#swagger api文档安全认证设置
+security:
+  basic:
+    path: /swagger-ui.html
+    enabled: true
+  user:
+    name: gjq
+    password: gjq
+  
+spring:
+  mvc:
+    static-path-pattern: /**
+    view:
+      prefix: /templates/
+      suffix: .ftl
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/
+  #classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,webapp为网站路径
+  datasource:
+    url: jdbc:h2:file:E:\\leibin\\project\\car-with-springboot\\web\\src\\main\\h2db\\testdb
+    username: sa
+    password: sa
+    driver-class-name: org.h2.Driver
+    druid:
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      test-on-borrow: true
+      stat-view-servlet.allow: true
+      
+  freemarker:
+    cache: false
+  request-context-attribute: request
+mybatis:
+  type-aliases-package: org.apache.boboo.springboot.car.pojo
+  mapper-locations: classpath:mapper/*.xml
+mapper:
+  mappers: org.apache.boboo.springboot.car.generator.MyMapper
+  not-empty: false
+  identity: HSQLDB
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
