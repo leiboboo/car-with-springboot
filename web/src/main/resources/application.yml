@@ -17,6 +17,8 @@ security:
     password: gjq
   
 spring:
+  application:
+    name: bootCar
   mvc:
     static-path-pattern: /**
     view:
@@ -36,9 +38,7 @@ spring:
       max-active: 20
       test-on-borrow: true
       stat-view-servlet.allow: true
-      
-  freemarker:
-    cache: false
+
   request-context-attribute: request
 mybatis:
   type-aliases-package: org.apache.boboo.springboot.car.pojo

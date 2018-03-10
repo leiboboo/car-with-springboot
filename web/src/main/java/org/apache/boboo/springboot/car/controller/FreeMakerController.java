@@ -7,6 +7,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -19,11 +21,13 @@ import io.swagger.annotations.ApiOperation;
  */
 @Controller
 public class FreeMakerController {
+	private static final Logger LOGGER = LoggerFactory.getLogger(FreeMakerController.class);
 	
 	//测试地址：http://localhost:8002/index
 	@ApiOperation(value="系统首页", notes="系统首页")
 	@RequestMapping("/index")  
     public String hello(HttpServletRequest request,Map<String,Object> map){
+		LOGGER.info("----hello----");
 	   String name=request.getParameter("name");
 	   if(name!=null && !name.equals("")){
 		   map.put("name", name+":您好！");  
